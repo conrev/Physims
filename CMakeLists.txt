@@ -7,6 +7,9 @@ target_sources(${PROJECT_NAME}
     PRIVATE
     # include source here
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/particle.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/world.cc
+
 )
 
 # Eigen

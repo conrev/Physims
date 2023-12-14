@@ -1,14 +1,24 @@
-#include <iostream>
+// #include <iostream>
 #include <Eigen/Dense>
-
-using Eigen::MatrixXd;
+#include "core/particle.h"
+#include "core/world.h"
 
 int main()
 {
-    MatrixXd m(2, 2);
-    m(0, 0) = 3;
-    m(1, 0) = 2.5;
-    m(0, 1) = -1;
-    m(1, 1) = m(1, 0) + m(0, 1);
-    std::cout << m << std::endl;
+    physims::World testWorld{};
+    physims::Particle oneParticle(
+        Eigen::Vector3d{-8, 57.0, 0});
+
+    testWorld.registerParticle(oneParticle);
+    float dt = 1;
+    float TIME_TO_SIM = 10;
+    float currentTime = 0;
+    std::cout << testWorld;
+
+    while (currentTime < TIME_TO_SIM)
+    {
+        testWorld.step(dt);
+        std::cout << testWorld;
+        currentTime += dt;
+    }
 }
